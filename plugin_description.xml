@@ -1,0 +1,9 @@
+<library path="lib/libaginika_ros_debug_tools">
+  <class name="aginika_ros_debug_tool/DebugButton"
+         type="aginika_ros_debug_tool::DebugButton"
+         base_class_type="rviz::Panel">
+    <description>
+      A panel widget to publish debug signal
+    </description>
+  </class>
+</library>
