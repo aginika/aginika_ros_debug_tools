@@ -12,6 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   tf
   tf2
+  topic_tools
 )
 
 find_package(Qt4 COMPONENTS QtCore QtGui REQUIRED)
@@ -21,7 +22,7 @@ add_definitions(-DQT_NO_KEYWORDS)
 
 catkin_package(
   INCLUDE_DIRS include
-  CATKIN_DEPENDS geometry_msgs pcl_ros sensor_msgs std_msgs tf tf2
+  CATKIN_DEPENDS geometry_msgs pcl_ros sensor_msgs std_msgs tf tf2 topic_tools
   DEPENDS pcl rviz
   LIBRARIES aginika_ros_debug_tools
 )
@@ -57,6 +58,12 @@ add_dependencies(aginika_ros_debug_tools ${PROJECT_NAME}_gencpp ${PROJECT_NAME}_
 
 install(DIRECTORY include/${PROJECT_NAME}/
         DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION})
+
+
+
+add_executable(topic_pulse_drive src/topic_pulse_drive.cpp)
+target_link_libraries(topic_pulse_drive ${catkin_LIBRARIES})
+add_dependencies(topic_pulse_drive ${PROJECT_NAME}_gencpp)
 
 ## Mark cpp header files for installation
 install(FILES plugin_description.xml
